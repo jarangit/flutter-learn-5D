@@ -56,7 +56,6 @@ class _WelcomeState extends State<Welcome> {
   //welcome widget
   Widget _textWelcome() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [Text("welcome"), Text("lorem ipsum lorem ipsum lorem ipsum")],
     );
   }

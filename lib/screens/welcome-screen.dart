@@ -14,9 +14,21 @@ class _WelcomeState extends State<Welcome> {
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.black, Colors.black87])),
-        child: Column(
-          children: [_textHeader(), _textWelcome(), _buttonStart()],
+            gradient: LinearGradient(
+          colors: [Colors.white, Colors.lightGreen.shade200],
+          // ทิศทางของสี
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          tileMode: TileMode.repeated,
+        )),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 32.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [_textHeader(), _textWelcome(), _buttonStart()],
+            ),
+          ),
         ),
       ),
     );
@@ -25,24 +37,44 @@ class _WelcomeState extends State<Welcome> {
   //header widget
   Widget _textHeader() {
     return Row(
-      children: [Text("header")],
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        IconButton(onPressed: () => "", icon: Icon(Icons.help)),
+        TextButton(
+            onPressed: () {},
+            child: Text(
+              "Help",
+            )),
+        Text(
+          "|",
+        ),
+        TextButton(onPressed: () {}, child: Text("English")),
+      ],
     );
   }
 
   //welcome widget
   Widget _textWelcome() {
-    return Row(
-      children: [Text("welcome")],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [Text("welcome"), Text("lorem ipsum lorem ipsum lorem ipsum")],
     );
   }
 
   //button widget
   Widget _buttonStart() {
     return SizedBox(
-      child: TextButton(
-        onPressed: () => print("welcome"),
-        child: Text("Get Start"),
-      ),
-    );
+        width: MediaQuery.of(context).size.width * 0.9,
+        child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                backgroundColor: Colors.green,
+                foregroundColor: Colors.white),
+            child: Text(
+              "Get Started",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )));
   }
 }
